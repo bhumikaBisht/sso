@@ -4,7 +4,7 @@ const app = express();
 const engine = require("ejs-mate");
 const session = require("express-session");
 const router = require("./router");
-
+const path = require("path")
 app.use(
   session({
     secret: "keyboard cat",
@@ -21,17 +21,19 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 app.engine("ejs", engine);
-app.set("views", __dirname + "/views");
+// app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
 app.use("/simplesso", router);
-app.get("/", (req, res, next) => {
-  const user = req.session.user || "unlogged";
-  res.render("index", {
-    what: `SSO-Server ${user}`,
-    title: "SSO-Server | Home",
-  });
-});
+// app.get("/", (req, res, next) => {
+//   const user = req.session.user || "unlogged"
+//   express.static(path.join(__dirname,'/frontend/build'));
+//   // res.render("index", {
+//   //   what: `SSO-Server ${user}`,
+//   //   title: "SSO-Server | Home",
+//   // });
+// });
+app.use(express.static(path.join(__dirname,'/frontend/build')));
 
 app.use((req, res, next) => {
   // catch 404 and forward to error handler

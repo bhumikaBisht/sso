@@ -5,6 +5,7 @@ const isAuthenticated = (req, res, next) => {
   // serviceURL is where the sso should redirect in case of valid user
   const redirectURL = `${req.protocol}://${req.headers.host}${req.path}`;
   if (req.session.user == null) {
+    
     return res.redirect(
       `http://localhost:3010/simplesso/login?serviceURL=${redirectURL}`
     );

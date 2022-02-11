@@ -156,17 +156,20 @@ const doLogin = (req, res, next) => {
   }
 
   // else redirect
+  console.log('here in login')
   const { serviceURL } = req.query;
   const id = encodedId();
   req.session.user = id;
   sessionUser[id] = email;
   if (serviceURL == null) {
-    return res.redirect("/");
+    console.log('serviceURL',serviceURL)
+    return res.send("/");
   }
   const url = new URL(serviceURL);
   const intrmid = encodedId();
   storeApplicationInCache(url.origin, id, intrmid);
-  return res.redirect(`${serviceURL}?ssoToken=${intrmid}`);
+  console.log(`${serviceURL}?ssoToken=${intrmid}`)
+  return res.send(`${serviceURL}?ssoToken=${intrmid}`);
 };
 
 const login = (req, res, next) => {
@@ -191,8 +194,10 @@ const login = (req, res, next) => {
   if (req.session.user != null && serviceURL != null) {
     const url = new URL(serviceURL);
     const intrmid = encodedId();
+    console.log('jere in new')
     storeApplicationInCache(url.origin, req.session.user, intrmid);
     return res.redirect(`${serviceURL}?ssoToken=${intrmid}`);
+    
   }
 
   return res.render("login", {
