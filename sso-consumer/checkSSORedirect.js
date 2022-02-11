@@ -2,8 +2,8 @@ const url = require("url");
 const axios = require("axios");
 const { URL } = url;
 const { verifyJwtToken } = require("./jwt_verify");
-const validReferOrigin = "http://sso.ankuranand.com:3010";
-const ssoServerJWTURL = "http://sso.ankuranand.com:3010/simplesso/verifytoken";
+const validReferOrigin = "http://localhost:3010";
+const ssoServerJWTURL = "http://localhost:3010/simplesso/verifytoken";
 
 const ssoRedirect = () => {
   return async function(req, res, next) {
