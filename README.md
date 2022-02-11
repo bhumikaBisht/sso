@@ -4,7 +4,7 @@
 To Run these examples you need to add the below entry inside your `/etc/hosts` file in linux
 
 ```
-127.0.0.1   sso.ankuranand.com
+127.0.0.1   localhost
 127.0.0.1   consumer.ankuranand.in
 ```
 
@@ -51,7 +51,7 @@ const isAuthenticated = (req, res, next) => {
   const redirectURL = `${req.protocol}://${req.headers.host}${req.path}`;
   if (req.session.user == null) {
     return res.redirect(
-      `http://sso.ankuranand.com:3010/simplesso/login?serviceURL=${redirectURL}`
+      `http://localhost:3010/simplesso/login?serviceURL=${redirectURL}`
     );
   }
   next();
