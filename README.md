@@ -100,7 +100,7 @@ We are checking if the serviceURL that has came as query to the ‘sso-server’
 
 ```javascript
     const alloweOrigin = {
-    "http://consumer.ankuranand.in:3020": true,
+    "http://localhost:3020": true,
     "http://consumertwo.ankuranand.in:3030": true,
     "http://test.tangledvibes.com:3080": true,
     "http://blog.tangledvibes.com:3080": fasle,

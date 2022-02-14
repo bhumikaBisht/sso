@@ -5,14 +5,14 @@ const { verifyJwtToken } = require("./jwt_verify");
 const validReferOrigin = "http://localhost:3010";
 const ssoServerJWTURL = "http://localhost:3010/simplesso/verifytoken";
 
-const ssoRedirect = () => {
+const validateClient = () => {
 
   
   return async function(req, res, next) {
     // check if the req has the queryParameter as ssoToken
     // and who is the referer.
-    const { ssoToken } = req.query;
-    if (ssoToken != null) {
+    
+   
       // to remove the ssoToken in query parameter redirect.
       const redirectURL = url.parse(req.url).pathname;
       try {
@@ -37,8 +37,7 @@ const ssoRedirect = () => {
       return res.redirect(`${redirectURL}`);
     }
 
-    return next();
-  };
+  ;
 };
 
-module.exports = ssoRedirect;
+module.exports = validateClient;

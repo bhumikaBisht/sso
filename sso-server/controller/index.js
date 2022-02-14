@@ -46,9 +46,9 @@ const appTokenDB = {
 };
 
 const alloweOrigin = {
-  "http://consumer.ankuranand.in:3020": true,
-  "http://consumertwo.ankuranand.in:3030": true,
-  "http://sso.ankuranand.in:3080": false
+  "http://localhost:3020": true,
+  // "http://consumertwo.ankuranand.in:3030": true,
+  // "http://sso.ankuranand.in:3080": false
 };
 
 const deHyphenatedUUID = () => uuidv4().replace(/-/gi, "");
@@ -60,12 +60,12 @@ const sessionUser = {};
 const sessionApp = {};
 
 const originAppName = {
-  "http://consumer.ankuranand.in:3020": "sso_consumer",
-  "http://consumertwo.ankuranand.in:3030": "simple_sso_consumer"
+  "http://localhost:3020": "sso_consumer",
+  // "http://consumertwo.ankuranand.in:3030": "simple_sso_consumer"
 };
 
 const userDB = {
-  "info@ankuranand.com": {
+  "bhumika.b@blobcity.com": {
     password: "test",
     userId: encodedId(), // incase you dont want to share the user-email.
     appPolicy: {
